@@ -20,7 +20,9 @@ module Validation
     end
 
     def validate!
-      
+      validate_parametrs = self.class.validations_history
+      validate_parametrs.each do |value|
+        send("validate_#{value[:type]}!".to_sym, instance_variable_get("@#{value[:name]}".to_sym), value[:options])
     end
 
     def validate_presence!(name, _options)
