@@ -21,4 +21,3 @@ module Acсessors
     end
   end
 end
-

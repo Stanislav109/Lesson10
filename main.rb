@@ -1,5 +1,5 @@
-require_relative 'validation'
 require_relative 'accessors'
+require_relative 'validation'
 require_relative 'instance_counter'
 require_relative 'manufacturer'
 require_relative 'wagon'
@@ -17,18 +17,18 @@ class RailRoad
 
   attr_accessor_with_history :var1
   instance_object = RailRoad.new
-  puts "Пример работы attr_accessor_with_history:"
-  puts "Присвоим значение var1 сначала 2, затем 3"
+  puts 'Пример работы attr_accessor_with_history:'
+  puts 'Присвоим значение var1 сначала 2, затем 3'
   instance_object.var1 = 2
   instance_object.var1 = 3
-  puts "Теперь посмотрим эти значения"
+  puts 'Теперь посмотрим эти значения'
   p instance_object.var1_history
 
   begin
     strong_attr_accessor :var1, Station
     instance_object = RailRoad.new
-    puts "Пример работы strong_attr_accessor:"
-    puts "Присвоим var1 значение 4 с несовпадающим классом (Station)"
+    puts 'Пример работы strong_attr_accessor:'
+    puts 'Присвоим var1 значение 4 с несовпадающим классом (Station)'
     instance_object.var1 = 4
     p instance_object
   rescue RuntimeError => e
@@ -37,10 +37,10 @@ class RailRoad
 
   begin
     strong_attr_accessor :var1, RailRoad
-    puts "Присвоим var1 значение 4 с совпадающим классом (RailRoad)"
+    puts 'Присвоим var1 значение 4 с совпадающим классом (RailRoad)'
     instance_object.var1 = 4
     p instance_object
-    puts "Значение присвоено"
+    puts 'Значение присвоено'
   rescue RuntimeError => e
     p e.inspect
   end
